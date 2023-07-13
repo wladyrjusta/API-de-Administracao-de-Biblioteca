@@ -30,7 +30,6 @@ bookRouter.get(
 );
 bookRouter.patch(
   '/:id/discount',
-  Validations.validateBook,
   (req: Request, res: Response) => bookcontroller.discountBook(req, res),
 );
 
