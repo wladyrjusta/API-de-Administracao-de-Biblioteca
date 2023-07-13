@@ -24,5 +24,14 @@ bookRouter.delete(
   '/:id',
   (req: Request, res: Response) => bookcontroller.deleteBook(req, res),
 );
+bookRouter.get(
+  '/author/search',
+  (req: Request, res: Response) => bookcontroller.getBookByQuery(req, res),
+);
+bookRouter.patch(
+  '/:id/discount',
+  Validations.validateBook,
+  (req: Request, res: Response) => bookcontroller.discountBook(req, res),
+);
 
 export default bookRouter;

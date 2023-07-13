@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import SequelizeBook from '../database/models/SequelizeBook';
 import { IBook } from '../interfaces/books/IBook';
 import { IBookModel } from '../interfaces/books/IBookModel';
@@ -38,5 +39,15 @@ export default class BookModel implements IBookModel {
 
   async delete(id: number): Promise<number> {
     return this.model.destroy({ where: { id } });
+  }
+
+  async findByQuery(q: string): Promise<IBook[]> {
+    return this.model.findAll({
+      where: {
+        author: {
+          [Op.like]: `%${q}%`,
+        },
+      },
+    });
   }
 }

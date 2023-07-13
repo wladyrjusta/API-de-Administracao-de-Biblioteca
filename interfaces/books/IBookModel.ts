@@ -7,4 +7,5 @@ export interface IBookModel {
   findById(id: IBook['id']): Promise<IBook | null>;
   update(id: IBook['id'], data: Partial<NewEntity<IBook>>): Promise<IBook | null>;
   delete(id: IBook['id']): Promise<number>;
+  findByQuery(q: string): Promise<IBook[]>;
 }
